@@ -11,13 +11,16 @@ public class Raycasting : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
+                GameManager gameManager = FindFirstObjectByType<GameManager>(); 
+
                 if (hit.collider.CompareTag("Brick"))
                 {
+                    gameManager.AddBrickPoints(); 
                     Destroy(hit.collider.gameObject); 
                 }
                 else if (hit.collider.CompareTag("QuestionBlock"))
                 {
-                    FindFirstObjectByType<GameManager>().AddCoin(); 
+                    gameManager.AddCoin();
                 }
             }
         }

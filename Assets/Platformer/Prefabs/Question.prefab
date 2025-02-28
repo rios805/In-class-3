@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2652198492393551389}
   - component: {fileID: 2652198492393551388}
   - component: {fileID: 7691787791081672915}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Question
   m_TagString: QuestionBlock
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2652198492393551387}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 064f14958019d2c4c95d5c7f16a6543a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -121,4 +121,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a390272d109c44fb221bfa37cdacfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionBlockMaterial: {fileID: 0}

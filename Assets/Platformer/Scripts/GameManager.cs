@@ -9,16 +9,33 @@ public class GameManager : MonoBehaviour
 
     private int coins = 0;
     private int score = 0;
+    private float startTime;
+    private int timeLimit = 100; 
+    private bool gameEnded = false;
 
     void Start()
     {
+        startTime = Time.time;
         UpdateUI();
     }
 
     void Update()
     {
-        int timeLeft = 300 - (int)(Time.time);
+        if (gameEnded) return; 
+
+        int timeLeft = timeLimit - (int)(Time.time - startTime);
         timerText.text = $"Time: {timeLeft}";
+
+        if (timeLeft <= 0)
+        {
+            EndGame(); 
+        }
+    }
+
+    void EndGame()
+    {
+        gameEnded = true;
+        Debug.Log("GAME OVER!");
     }
 
     public void AddCoin()
@@ -34,9 +51,15 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
+    public void AddBrickPoints()
+    {
+        score += 100; 
+        UpdateUI();
+    }
+
     void UpdateUI()
     {
-         coinText.text = $"x{coins.ToString("D2")}"; 
+        coinText.text = $"x{coins.ToString("D2")}";
         scoreText.text = $"{score.ToString("D6")}";
     }
 }

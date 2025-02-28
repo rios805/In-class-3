@@ -40,20 +40,20 @@ public class LevelParser : MonoBehaviour
     public GameObject stonePrefab;
     public GameObject testPrefab;
 
-    // --------------------------------------------------------------------------
+ 
     void Start()
     {
         LoadLevel();
     }
 
-    // --------------------------------------------------------------------------
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
             ReloadLevel();
     }
 
-    // --------------------------------------------------------------------------
+
     void LoadLevel()
     {
         string fileToParse = $"{Application.dataPath}/Resources/{filename}.txt";
@@ -97,13 +97,14 @@ public class LevelParser : MonoBehaviour
                     Vector3 pos = new Vector3(col + 0.5f, row + 0.5f, 0f); // Set position
                     GameObject newObj = Instantiate(blockPrefab, environmentRoot);
                     newObj.transform.position = pos;
+                    if (letters[col] == 'b') newObj.tag = "Brick";
+                    if (letters[col] == '?') newObj.tag = "QuestionBlock";
                 }
             }
             row++;
         }
     }
 
-    // --------------------------------------------------------------------------
     void ReloadLevel()
     {
         foreach (Transform child in environmentRoot)
